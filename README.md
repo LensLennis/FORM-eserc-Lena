@@ -1,5 +1,3 @@
-# FORM-eserc-Lena
-
 Lena Lorenzo – S5212736 
 Commento per la seconda parte dell’esercita
 
@@ -29,6 +27,8 @@ Per fare una prova più veloce, è possibile inserire direttamente “1 2 3  2  
 A questo punto ho provato ad inserire, al posto dei numeri, alcune lettere, e sia nel menu che nell’inserimento dei parametri il programma va in loop e dà problemi, creando innumerevoli poligoni. 
 Un altro test effettuato è stato il controllo della stampa vuota: non viene stampato, come dovrebbe, nessun poligono, anche se sarebbe stato più chiaro un messaggio con il controllo di “MAX_NUM” (particolarmente apprezzato invece nell’indicizzazione dei poligoni).
 Un grosso problema del programma è la mancanza del delete per i poligoni: non è stato chiamato il distruttore perciò i poligoni rimangono “costruiti” nella RAM, potenzialmente creando problemi.
+Non è stata scritta la definizione degli operatori == e = nella classe triangolo isoscele, così come la definizione di “<<” e “>>”.
+
 
 
 
@@ -40,42 +40,48 @@ Un grosso problema del programma è la mancanza del delete per i poligoni: non �
 
 
 
-#include "isotriangle.h"
-#include "rhombus.h"
-#include "rectangle.h"
-#define MAX_NUM 10
-using namespace std;
-int main() {
+
+
+	#include "isotriangle.h"
+	#include "rhombus.h"
+	#include "rectangle.h"
+	#define MAX_NUM 10
+	using namespace std;
+	int main() {
 	int number = 0;
 	Polygon* universo[MAX_NUM] = { 0 };
-	
 	universo[number] = new Rectangle(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the rectangle succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
-
 	universo[number] = new Rhombus(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the Rhombus succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
-
 	universo[number] = new IsoTriangle(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the Triangle succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
-
-
-
+	universo[number=3] = new IsoTriangle;
+	universo[number = 4] = new IsoTriangle(2, 3);
+	universo[3] = universo[4];
+	universo[3]->Draw();
+	if (universo[3] == universo[4])
+		cout << "Operators == and = work fine." << endl;
+	else { cout << "There is some issue with == || =."; }
+	cout << "______________________________________________" << endl;
+	universo[3]->Reset();
+	universo[2]=new IsoTriangle(0,0);
+	if (universo[3] == universo[2])
+		cout << "Reset works as well." << endl;
+	else cout << "Reset does not work." << endl;
+	cout << "______________________________________________" << endl;
+	//cout << universo[2]->ErrorMessage("PROVA DELLA FUNZIONE ERRORE: OK") << endl;
+	//cout << universo[2]->WarningMessage("PROVA DELLA FUNZIONE WARNING: OK") << endl;
+	//bisogna commentare questa parte poichè non essendo definito << non è possibile scriverla
 	return 0;
 
-}
-
-
-
-3.b Riportare i risultati del test
-
-//Tutto bene grazie	 (devo ancora fare questa parte)
-
+	}
