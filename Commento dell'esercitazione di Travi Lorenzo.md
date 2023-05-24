@@ -36,8 +36,6 @@ Non è stata scritta la definizione degli operatori == e = nella classe triangol
 
 3.a Definire una procedura di test che permetta di identificare possibili bug nel codice prodotto per le singole classi e i singoli metodi di ogni classe
 
-***DA ULTIMARE***
-
 
 
 
