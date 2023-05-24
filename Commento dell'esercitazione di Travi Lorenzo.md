@@ -9,11 +9,11 @@ Commento per la seconda parte dell’esercita
 
 1.b Utilizzando la documentazione e i commenti inseriti nei file .ccp e .h verificare se il progetto software aderisce alle specifiche assegnate durante la prima settimana. Indicare le eventuali specifiche non rispettate.
 
--Il progetto contiene documentazione e commenti corretti nonostante, come sopracitato, sia un po’ confusionaria la descrizione nel main e la dichiarazioni di alcuni commenti con doxygen per via dell’ibrido “\” e “@”. Non è stato particolarmente apprezzato l’uso sia di lingua inglese che di lingua italiana, poiché potrebbe suggerire (se non conoscessi le persone direttamente e non sapessi che hanno scritto loro stessi) che sia stato effettuato un copia incolla senza un controllo.
+-Il progetto contiene documentazione e commenti corretti nonostante, come sopracitato, sia un po’ confusionaria la descrizione nel main e la dichiarazioni di alcuni commenti con doxygen per via dell’ibrido “\” e “@”. Non è stato particolarmente apprezzato l’uso sia di lingua inglese che di lingua italiana.
 
 1.c Verificare che il file README introduca correttamente lo scopo del progetto software e che dia sufficienti informazioni per un corretto uso dell’interfaccia a riga di comando. Indicare eventuali mancanze e/o possibili migliorie.
 
--Non è stato creato un file readme da nessuno dei due membri della coppia, quindi non mi posso esprimere a riguardo.
+-Non è stato creato un file readme da nessuno dei due membri della coppia.
 
 
 2 Compilazione e prima sessione di test
@@ -24,10 +24,12 @@ Commento per la seconda parte dell’esercita
 -L’interfaccia funziona correttamente, il menu è intuitivo e sia la creazione di nuovi oggetti che la stampa dei valori di area e perimetro sono funzionanti.
 Per quanto riguarda i test effettuati, ho provato dapprima a creare 3 oggetti (uno per tipo) e a farne stampare i valori, e fin qua tutto funziona correttamente.
 Per fare una prova più veloce, è possibile inserire direttamente “1 2 3  2  2 3  3  3 4  4”.
-A questo punto ho provato ad inserire, al posto dei numeri, alcune lettere, e sia nel menu che nell’inserimento dei parametri il programma va in loop e dà problemi, creando innumerevoli poligoni. 
-Un altro test effettuato è stato il controllo della stampa vuota: non viene stampato, come dovrebbe, nessun poligono, anche se sarebbe stato più chiaro un messaggio con il controllo di “MAX_NUM” (particolarmente apprezzato invece nell’indicizzazione dei poligoni).
+A questo punto ho provato ad inserire, al posto dei numeri, alcune lettere, e sia nel menu che nell’inserimento dei parametri il programma va in loop e dà problemi, creando innumerevoli poligoni.
+Ho provato a controllare la creazione di poligoni con parametri negativi, impossibilitata dal controllo di valori maggiori o uguali a 0 (e quindi, corretta).
+Un altro test effettuato è stato il controllo della stampa vuota: non viene stampato, come dovrebbe, nessun poligono, anche se sarebbe stato più chiaro un messaggio con il controllo di “MAX_NUM”.
+È stata particolarmente apprezzata nell’indicizzazione dei poligoni.
 Un grosso problema del programma è la mancanza del delete per i poligoni: non è stato chiamato il distruttore perciò i poligoni rimangono “costruiti” nella RAM, potenzialmente creando problemi.
-Non è stata scritta la definizione degli operatori == e = nella classe triangolo isoscele, così come la definizione di “<<” e “>>”.
+Non è stato scritto l'overload di “<<” e “>>”.
 
 
 
