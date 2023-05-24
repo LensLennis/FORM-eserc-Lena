@@ -41,6 +41,7 @@ Non è stata scritta la definizione degli operatori == e = nella classe triangol
 
 
 
+Includo le librerie e creo un array di poligoni così mi oriento più facilmente tra gli oggetti indicizzandoli:
 
 	#include "isotriangle.h"
 	#include "rhombus.h"
@@ -50,38 +51,69 @@ Non è stata scritta la definizione degli operatori == e = nella classe triangol
 	int main() {
 	int number = 0;
 	Polygon* universo[MAX_NUM] = { 0 };
+
+Creo un nuovo rettangolo come prima prova:
+
 	universo[number] = new Rectangle(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the rectangle succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
+
+Creo un nuovo rombo:
+
 	universo[number] = new Rhombus(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the Rhombus succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
+
+Creo un nuovo triangolo isoscele:
+
 	universo[number] = new IsoTriangle(2, 3);
 	universo[number]->Draw();
 	cout << "Draw of the Triangle succesful. Deleting..." << endl;
 	delete universo[number];
 	cout << "______________________________________________" << endl;
+
+Controllo il funzionamento dapprima dell'operatore =, poi dell'operatore ==:
+
 	universo[number=3] = new IsoTriangle;
 	universo[number = 4] = new IsoTriangle(2, 3);
 	universo[3] = universo[4];
 	universo[3]->Draw();
+
 	if (universo[3] == universo[4])
 		cout << "Operators == and = work fine." << endl;
 	else { cout << "There is some issue with == || =."; }
 	cout << "______________________________________________" << endl;
+
+Faccio un controllo della Reset, controllando se il perimetro del nuovo oggetto è =0:
+
 	universo[3]->Reset();
-	universo[2]=new IsoTriangle(0,0);
-	if (universo[3] == universo[2])
+	if (universo[3]->GetPerimeter() == 0)
+	{
 		cout << "Reset works as well." << endl;
-	else cout << "Reset does not work." << endl;
+	}
+	else
+	{
+		cout << "Reset does not work. GetPerimeter() does not return 0." << endl;
+	}
 	cout << "______________________________________________" << endl;
+
+Vorrei fare una prova delle funzioni di stampa errore e warning, purtroppo però non è stato definito il significato di "<<" e ">>" perciò lo lascerò commentato:
+
 	//cout << universo[2]->ErrorMessage("PROVA DELLA FUNZIONE ERRORE: OK") << endl;
 	//cout << universo[2]->WarningMessage("PROVA DELLA FUNZIONE WARNING: OK") << endl;
 	//bisogna commentare questa parte poichè non essendo definito << non è possibile scriverla
-	return 0;
+	
+Faccio la delete per controllare un'ultima volta l'ordine di distruzione del distruttore (Intermedio e poi Base):
 
+	delete universo[1];
+	return 0;
 	}
+	
+	
+Il test ha dimostrato che il programma è funzionante e il collegamento tra classi è corretto.
+Manca l'overload degli operatori << e >>. 
+
